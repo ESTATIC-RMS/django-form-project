@@ -1,0 +1,228 @@
+{% extends "userauths/base.html" %}
+{% block left-block %}
+<h1>Form</h1>
+
+{% comment %} enctype="multipart/form-data" if you are using images in your form {% endcomment %}
+
+<form action="" method='POST' enctype="multipart/form-data">
+    {% csrf_token %}
+
+ {% comment %} Non-field errors are used to display validation errors 
+    that are not tied to a specific form field (e.g., password mismatch)     {% endcomment %}
+
+    {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+    <p class='alert alert-danger my-3'>{{error}}</p>
+    {% endfor %}
+    {% endif %}
+
+{% comment %} for name input   {% endcomment %}
+    <div class="mb-3">
+    <label for="{{form.name.id_for_label}}" class="form-label">{{form.name.label}}</label>
+    {{form.name}}
+    {% if form.name.errors %}
+    <div class="text-danger">
+        {% for error in form.name.errors %}
+        <p>{{error}}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    </div>
+
+
+{% comment %} for dob input   {% endcomment %}
+    <div class="mb-3">
+    <label for="{{form.dob.id_for_label}}" class="form-label">{{form.dob.label}}</label>
+    {{form.dob}}
+    {% if form.dob.errors %}
+    <div class="text-danger">
+        {% for error in form.dob.errors %}
+        <p>{{error}}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    </div>
+
+{% comment %} for gender input   {% endcomment %}    
+    <div class="mb-3">
+    <label for="{{form.gender.id_for_label}}" class="form-label">{{form.gender.label}}</label>
+    {{form.gender}}
+    {% if form.gender.errors %}
+    <div class="text-danger">
+        {% for error in form.gender.errors %}
+        <p>{{error}}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    </div>
+
+
+{% comment %} for locality input   {% endcomment %}    
+    <div class="mb-3">
+    <label for="{{form.locality.id_for_label}}" class="form-label">{{form.locality.label}}</label>
+    {{form.locality}}
+    {% if form.locality.errors %}
+    <div class="text-danger">
+        {% for error in form.locality.errors %}
+        <p>{{error}}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    </div>
+
+{% comment %} for city input   {% endcomment %}
+    <div class="mb-3">
+    <label for="{{form.city.id_for_label}}" class="form-label">{{form.city.label}}</label>
+    {{form.city}}
+    {% if form.city.errors %}
+    <div class="text-danger">
+        {% for error in form.city.errors %}
+        <p>{{error}}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    </div>
+
+{% comment %} for PIN No input   {% endcomment %}
+    <div class="mb-3">
+    <label for="{{form.pin.id_for_label}}" class="form-label">{{form.pin.label}}</label>
+    {{form.pin}}
+    {% if form.pin.help_text %}
+    <div class='form-text'>{{form.pin.help_text}}</div>
+    {% endif %}
+    {% if form.pin.errors %}
+    <div class="text-danger">
+        {% for error in form.pin.errors %}
+        <p>{{error}}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    </div>
+
+{% comment %} for state input   {% endcomment %}
+    <div class="mb-3">
+    <label for="{{form.state.id_for_label}}" class="form-label">{{form.state.label}}</label>
+    {{form.state}}
+    {% if form.state.errors %}
+    <div class="text-danger">
+        {% for error in form.state.errors %}
+        <p>{{error}}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    </div>
+
+{% comment %} for mobile input   {% endcomment %}    
+    <div class="mb-3">
+    <label for="{{form.mobile.id_for_label}}" class="form-label">{{form.mobile.label}}</label>
+    {{form.mobile}}
+    {% if form.mobile.help_text %}
+    <div class='form-text'>{{form.mobile.help_text}}</div>
+    {% endif %}
+    {% if form.mobile.errors %}
+    <div class="text-danger">
+        {% for error in form.mobile.errors %}
+        <p>{{error}}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    </div>
+
+{% comment %} for email input   {% endcomment %}    
+    <div class="mb-3">
+    <label for="{{form.email.id_for_label}}" class="form-label">{{form.email.label}}</label>
+    {{form.email}}
+    {% if form.email.errors %}
+    <div class="text-danger">
+        {% for error in form.email.errors %}
+        <p>{{error}}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    </div>
+
+{% comment %} for job_city input   {% endcomment %}    
+    <div class="mb-3">
+    <label for="{{form.job_city.id_for_label}}" class="form-label">{{form.job_city.label}}</label>
+    {{form.job_city}}
+    {% if form.job_city.errors %}
+    <div class="text-danger">
+        {% for error in form.job_city.errors %}
+        <p>{{error}}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    </div>
+
+{% comment %} for profile_image input   {% endcomment %}
+    <div class="mb-3">
+    <label for="{{form.profile_image.id_for_label}}" class="form-label">{{form.profile_image.label}}</label>
+    {{form.profile_image}}
+    {% if form.profile_image.help_text %}
+    <div class='form-text'>{{form.profile_image.help_text}}</div>
+    {% endif %}
+    {% if form.profile_image.errors %}
+    <div class="text-danger">
+        {% for error in form.profile_image.errors %}
+        <p>{{error}}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+        <div class="mt-3">
+        <img id="imagePreview" src="" alt="Image Preview"
+        style="display: none; max-width: 50%; height: auto;">
+        </div>
+    </div>
+    
+
+{% comment %} for my_file input   {% endcomment %}
+    <div class="mb-3">
+    <label for="{{form.my_file.id_for_label}}" class="form-label">{{form.my_file.label}}</label>
+    {{form.my_file}}
+    {% if form.my_file.help_text %}
+    <div class='form-text'>{{form.my_file.help_text}}</div>
+    {% endif %}
+    {% if form.my_file.errors %}
+    <div class="text-danger">
+        {% for error in form.my_file.errors %}
+        <p>{{error}}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    </div>
+    <button type="submit" class='btn btn-primary'>Submit</button>
+</form>
+
+{% comment %} for showing choosen image in the div or box {% endcomment %}
+<script>
+
+    function previewImage(event) {
+    const imagePreview = document.getElementById('imagePreview');
+    const file = event.target.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            imagePreview.src = e.target.result;
+            imagePreview.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+    } else {
+        imagePreview.style.display = 'none';
+    }
+}
+
+document.querySelector("input[type='file']").addEventListener("change", previewImage);
+</script>
+{% endblock left-block %}
+
+
+
+{% block right-block %}
+<h4 class="text-center mb-3">
+    <u>List of Candidates.</u>
+</h4>
+{% for can in cand %}
+<p>{{can.id}}: <a href="{% url "candidate" can.id %}">{{can.name}}</a></p>
+{% endfor %}
+{% endblock right-block %}
