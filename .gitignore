@@ -6,7 +6,7 @@ __pycache__/
 venv/
 
 # Django
-db.sqlite3          # local dev DB
+.sqlite3          # local dev DB
 *.log
 media/              # user uploads (better use cloud storage)
 
